@@ -1,59 +1,81 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Upload - LUMORA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload — LUMORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="nav">
-  <div class="logo">LUMORA</div>
+  <a class="logo" href="index.html">
+    <svg class="seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    LUMORA
+  </a>
 
-  <nav>
+  <nav class="nav-links">
     <a href="index.html">Home</a>
     <a href="library.html">Library</a>
-    <a href="upload.html">Upload</a>
+    <a href="upload.html" class="active">Upload</a>
   </nav>
+
+  <div class="nav-account" id="navAccount"></div>
 </header>
 
 <section class="section">
+  <div class="section-head">
+    <h2>Staging area</h2>
+    <p class="muted">Files land here first. Commit them to a folder when you're ready to keep them.</p>
+  </div>
 
-<h2>Upload (Staging Area)</h2>
+  <div id="dropZone" class="drop-zone">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 20h16"/></svg>
+    <h3>Drag & drop files here</h3>
+    <p>or choose them from your device</p>
 
-<div id="dropZone" class="drop-zone">
+    <label class="file-input-label" for="fileInput">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+      Browse files
+    </label>
+    <input type="file" id="fileInput" multiple>
+  </div>
+</section>
 
-  <h3>📁 Drag & Drop Files Here</h3>
+<section class="section" style="padding-top:0;">
+  <div class="section-head">
+    <h2>Staged files</h2>
+    <p class="muted">Up to 5MB per file. Commit when ready, or discard what you don't need.</p>
+  </div>
 
-  <p>or click below to upload</p>
-
-  <input
-    type="file"
-    id="fileInput"
-    multiple
-    style="margin-top:20px;"
-  >
-
-</div>
-
-<h2>Staged Files</h2>
-<div id="staging"></div>
-
+  <div id="staging"></div>
 </section>
 
 <!-- COMMIT MODAL -->
 <div id="commitModal" class="modal">
-  <div class="modal-box"> 
+  <div class="modal-box">
+    <h3>Commit file to</h3>
+    <p>Select a destination folder.</p>
 
-    <h3>Commit File To</h3>
-    <p>Select a destination folder</p>
+    <div class="modal-options">
+      <button onclick="confirmCommit('notes')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Notes
+      </button>
+      <button onclick="confirmCommit('ai')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0-1.5 5.6A3 3 0 0 0 7 19a3 3 0 0 0 2 .8"/><path d="M15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 1.5 5.6A3 3 0 0 1 17 19a3 3 0 0 1-2 .8"/><path d="M9 4a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3"/><path d="M15 4a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3"/></svg>
+        AI Research
+      </button>
+      <button onclick="confirmCommit('business')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Business Plan
+      </button>
+    </div>
 
-    <button onclick="confirmCommit('notes')">📘 Notes</button>
-    <button onclick="confirmCommit('ai')">🧠 AI Research</button>
-    <button onclick="confirmCommit('business')">💼 Business Plan</button>
-
-    <button class="close" onclick="closeModal()">Cancel</button>
-
+    <button class="close" onclick="closeModal('commitModal')">Cancel</button>
   </div>
 </div>
 
