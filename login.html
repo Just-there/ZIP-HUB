@@ -1,39 +1,110 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login - LUMORA</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign in — LUMORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="auth-box">
-  <h2>LUMORA Login</h2>
+<header class="nav">
+  <a class="logo" href="index.html">
+    <svg class="seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    LUMORA
+  </a>
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="library.html">Library</a>
+    <a href="upload.html">Upload</a>
+  </nav>
+  <div class="nav-account" id="navAccount"></div>
+</header>
 
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
+<div class="auth-wrap">
+  <div class="auth-box">
+    <svg class="seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
 
-  <button onclick="loginUser()">Login</button>
-  <button onclick="signupUser()">Sign Up</button>
+    <h2 id="authTitle">Welcome back</h2>
+    <p class="sub" id="authSub">Sign in to reach your staged files and library.</p>
+
+    <form id="authForm" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" autocomplete="email" required>
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="••••••••" autocomplete="current-password" required>
+      </div>
+
+      <p class="auth-error" id="authError"></p>
+
+      <div class="auth-actions">
+        <button type="submit" class="btn primary" id="primaryAction" style="justify-content:center;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+          Sign in
+        </button>
+        <button type="button" class="btn ghost" id="toggleMode" style="justify-content:center;">
+          Need an account? Sign up
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
 
 <script src="script.js"></script>
-
 <script>
-function loginUser() {
-  login(
-    document.getElementById("email").value,
-    document.getElementById("password").value
-  );
-}
+  let mode = "login"; // "login" | "signup"
 
-function signupUser() {
-  signup(
-    document.getElementById("email").value,
-    document.getElementById("password").value
-  );
-}
+  const form = document.getElementById("authForm");
+  const errorEl = document.getElementById("authError");
+  const titleEl = document.getElementById("authTitle");
+  const subEl = document.getElementById("authSub");
+  const primaryBtn = document.getElementById("primaryAction");
+  const toggleBtn = document.getElementById("toggleMode");
+
+  function applyMode() {
+    errorEl.classList.remove("show");
+    if (mode === "login") {
+      titleEl.textContent = "Welcome back";
+      subEl.textContent = "Sign in to reach your staged files and library.";
+      primaryBtn.lastChild.textContent = " Sign in";
+      toggleBtn.textContent = "Need an account? Sign up";
+    } else {
+      titleEl.textContent = "Create your account";
+      subEl.textContent = "A free LUMORA account keeps your library private to you.";
+      primaryBtn.lastChild.textContent = " Sign up";
+      toggleBtn.textContent = "Already have an account? Sign in";
+    }
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    mode = mode === "login" ? "signup" : "login";
+    applyMode();
+  });
+
+  form.addEventListener("submit", e => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const result = mode === "login" ? login(email, password) : signup(email, password);
+
+    if (!result.ok) {
+      errorEl.textContent = result.message;
+      errorEl.classList.add("show");
+      return;
+    }
+
+    window.location.href = "index.html";
+  });
+
+  applyMode();
 </script>
-
 </body>
 </html>
