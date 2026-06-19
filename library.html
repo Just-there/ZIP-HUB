@@ -1,29 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Library - LUMORA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Library — LUMORA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="nav">
-  <div class="logo">LUMORA</div>
+  <a class="logo" href="index.html">
+    <svg class="seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    LUMORA
+  </a>
 
-  <nav>
+  <nav class="nav-links">
     <a href="index.html">Home</a>
-    <a href="library.html">Library</a>
+    <a href="library.html" class="active">Library</a>
     <a href="upload.html">Upload</a>
   </nav>
+
+  <div class="nav-account" id="navAccount"></div>
 </header>
 
 <section class="section">
+  <div class="section-head">
+    <h2>Your library</h2>
+    <p class="muted">Every committed file, organized by folder, with a full history below.</p>
+  </div>
 
-<h2>Your Library (GitHub Style)</h2>
-
-<div id="library"></div>
-
+  <div id="library"></div>
 </section>
+
+<!-- MOVE MODAL -->
+<div id="moveModal" class="modal">
+  <div class="modal-box">
+    <h3>Move file to</h3>
+    <p>Choose a new destination folder.</p>
+
+    <div class="modal-options">
+      <button onclick="confirmMove('notes')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Notes
+      </button>
+      <button onclick="confirmMove('ai')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0-1.5 5.6A3 3 0 0 0 7 19a3 3 0 0 0 2 .8"/><path d="M15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 1.5 5.6A3 3 0 0 1 17 19a3 3 0 0 1-2 .8"/><path d="M9 4a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3"/><path d="M15 4a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3"/></svg>
+        AI Research
+      </button>
+      <button onclick="confirmMove('business')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Business Plan
+      </button>
+    </div>
+
+    <button class="close" onclick="closeModal('moveModal')">Cancel</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>
