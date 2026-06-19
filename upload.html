@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload - LUMORA</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="logo">LUMORA</div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="library.html">Library</a>
+    <a href="upload.html">Upload</a>
+  </nav>
+</header>
+
+<section class="section">
+
+<h2>Upload (Staging Area)</h2>
+
+<div id="dropZone" class="drop-zone">
+
+  <h3>📁 Drag & Drop Files Here</h3>
+
+  <p>or click below to upload</p>
+
+  <input
+    type="file"
+    id="fileInput"
+    multiple
+    style="margin-top:20px;"
+  >
+
+</div>
+
+<h2>Staged Files</h2>
+<div id="staging"></div>
+
+</section>
+
+<!-- COMMIT MODAL -->
+<div id="commitModal" class="modal">
+  <div class="modal-box"> 
+
+    <h3>Commit File To</h3>
+    <p>Select a destination folder</p>
+
+    <button onclick="confirmCommit('notes')">📘 Notes</button>
+    <button onclick="confirmCommit('ai')">🧠 AI Research</button>
+    <button onclick="confirmCommit('business')">💼 Business Plan</button>
+
+    <button class="close" onclick="closeModal()">Cancel</button>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

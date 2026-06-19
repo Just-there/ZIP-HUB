@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login - LUMORA</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="auth-box">
+  <h2>LUMORA Login</h2>
+
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="loginUser()">Login</button>
+  <button onclick="signupUser()">Sign Up</button>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+function loginUser() {
+  login(
+    document.getElementById("email").value,
+    document.getElementById("password").value
+  );
+}
+
+function signupUser() {
+  signup(
+    document.getElementById("email").value,
+    document.getElementById("password").value
+  );
+}
+</script>
+
+</body>
+</html>

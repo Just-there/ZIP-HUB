@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LUMORA</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="logo">LUMORA</div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="library.html">Library</a>
+    <a href="upload.html">Upload</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Your Digital Library, Reimagined</h1>
+  <p>Upload, commit, and organize files like GitHub — but for learning.</p>
+
+  <div class="cta">
+    <a class="btn primary" href="upload.html">
+      <span id="icon-upload"></span>
+      Upload Files
+    </a>
+
+    <a class="btn secondary" href="library.html">
+      <span id="icon-folder"></span>
+      Open Library
+    </a>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div>📦 1,200+ Files</div>
+  <div>👨‍💻 Git-style Commits</div>
+  <div>⚡ Instant Preview</div>
+  <div>🧠 Smart Organization</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <h2>How LUMORA Works</h2>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="icon"></div>
+      <h3>1. Upload</h3>
+      <p>Drag and drop files into staging area</p>
+    </div>
+
+    <div class="step">
+      <h3>2. Commit</h3>
+      <p>Select folder (Notes / AI / Business)</p>
+    </div>
+
+    <div class="step">
+      <h3>3. Organize</h3>
+      <p>Your library stays structured like GitHub</p>
+    </div>
+
+  </div>
+</section>
+
+<script src="script.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  setupUpload();
+  renderStaging();
+});
+</script>
