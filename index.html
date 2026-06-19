@@ -1,77 +1,136 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>LUMORA</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMORA — Your library, version controlled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="nav">
-  <div class="logo">LUMORA</div>
+  <a class="logo" href="index.html">
+    <svg class="seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    LUMORA
+  </a>
 
-  <nav>
-    <a href="index.html">Home</a>
+  <nav class="nav-links">
+    <a href="index.html" class="active">Home</a>
     <a href="library.html">Library</a>
     <a href="upload.html">Upload</a>
   </nav>
+
+  <div class="nav-account" id="navAccount"></div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Your Digital Library, Reimagined</h1>
-  <p>Upload, commit, and organize files like GitHub — but for learning.</p>
+  <div class="reveal">
+    <span class="hero-eyebrow">Version control, for everything you learn</span>
+    <h1>Your digital library, <em>committed</em> properly.</h1>
+    <p class="lede">Stage what you upload, commit it to a folder, and keep a running history of every change — the way developers track code, applied to your notes, research, and plans.</p>
 
-  <div class="cta">
-    <a class="btn primary" href="upload.html">
-      <span id="icon-upload"></span>
-      Upload Files
-    </a>
+    <div class="cta">
+      <a class="btn primary" href="upload.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 20h16"/></svg>
+        Upload files
+      </a>
+      <a class="btn secondary" href="library.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+        Open library
+      </a>
+    </div>
+  </div>
 
-    <a class="btn secondary" href="library.html">
-      <span id="icon-folder"></span>
-      Open Library
-    </a>
+  <div class="reveal delay-1">
+    <div class="ledger-card">
+      <header>
+        <span>Recent commits</span>
+        <span>main</span>
+      </header>
+      <div class="ledger-row">
+        <span class="hash">a3f9</span>
+        <span class="label">syllabus-week-4.pdf</span>
+        <span class="folder-tag">notes</span>
+      </div>
+      <div class="ledger-row">
+        <span class="hash">7c2e</span>
+        <span class="label">prompt-experiments.md</span>
+        <span class="folder-tag">ai</span>
+      </div>
+      <div class="ledger-row">
+        <span class="hash">d810</span>
+        <span class="label">pitch-deck-v3.pdf</span>
+        <span class="folder-tag">business</span>
+      </div>
+      <div class="ledger-row">
+        <span class="hash">0fb4</span>
+        <span class="label">lecture-recording.mp3</span>
+        <span class="folder-tag">notes</span>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- STATS -->
 <section class="stats">
-  <div>📦 1,200+ Files</div>
-  <div>👨‍💻 Git-style Commits</div>
-  <div>⚡ Instant Preview</div>
-  <div>🧠 Smart Organization</div>
+  <div class="stat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>
+    <span><strong>Any file type</strong> — staged in one drop</span>
+  </div>
+  <div class="stat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h6"/><path d="M15 12h6"/></svg>
+    <span><strong>Git-style commits</strong> for every file</span>
+  </div>
+  <div class="stat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>
+    <span><strong>Instant preview</strong> for images & PDFs</span>
+  </div>
+  <div class="stat">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0-1.5 5.6A3 3 0 0 0 7 19a3 3 0 0 0 2 .8"/><path d="M15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 1.5 5.6A3 3 0 0 1 17 19a3 3 0 0 1-2 .8"/><path d="M9 4a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3"/><path d="M15 4a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3"/></svg>
+    <span><strong>Smart folders</strong> sort by subject</span>
+  </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section class="section">
-  <h2>How LUMORA Works</h2>
+  <div class="section-head">
+    <h2>How LUMORA works</h2>
+    <p class="muted">Three steps, same as a real commit workflow — upload, commit, organize.</p>
+  </div>
 
   <div class="steps">
-
     <div class="step">
-      <div class="icon"></div>
-      <h3>1. Upload</h3>
-      <p>Drag and drop files into staging area</p>
+      <span class="step-no">01</span>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="M7 9l5-5 5 5"/><path d="M4 20h16"/></svg>
+      <h3>Upload</h3>
+      <p>Drag and drop files into the staging area, or browse from your device.</p>
     </div>
 
     <div class="step">
-      <h3>2. Commit</h3>
-      <p>Select folder (Notes / AI / Business)</p>
+      <span class="step-no">02</span>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M3 12h6"/><path d="M15 12h6"/></svg>
+      <h3>Commit</h3>
+      <p>Pick a destination — Notes, AI Research, or Business Plan — to lock it in.</p>
     </div>
 
     <div class="step">
-      <h3>3. Organize</h3>
-      <p>Your library stays structured like GitHub</p>
+      <span class="step-no">03</span>
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7z"/></svg>
+      <h3>Organize</h3>
+      <p>Your library stays structured, searchable, and backed by a full commit history.</p>
     </div>
-
   </div>
 </section>
 
+<footer>
+  <span><svg class="seal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>LUMORA — built for people who treat their files like source code.</span>
+  <span>&copy; 2026</span>
+</footer>
+
 <script src="script.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  setupUpload();
-  renderStaging();
-});
-</script>
+</body>
+</html>
